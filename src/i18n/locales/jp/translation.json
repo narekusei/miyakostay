@@ -1,0 +1,23 @@
+{
+  "app": {
+    "title": "ミヤコステイ",
+    "subtitle": "宮古島であなたにぴったりの宿泊施設を見つけよう"
+  },
+  "filters": {
+    "search": "ホテルを検索...",
+    "maxPrice": "1泊の最大料金",
+    "minRating": "最小評価",
+    "beachOnly": "ビーチアクセスありのみ",
+    "tags": "タグ"
+  },
+  "hotel": {
+    "perNight": "1泊あたり",
+    "reviews": "件のレビュー",
+    "amenities": "設備",
+    "viewDetails": "詳細を見る"
+  },
+  "common": {
+    "loading": "読み込み中...",
+    "noResults": "条件に合うホテルが見つかりません。フィルターを調整してください。"
+  }
+}

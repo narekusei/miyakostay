@@ -1,0 +1,23 @@
+{
+  "app": {
+    "title": "MiyakoStay",
+    "subtitle": "Find your perfect stay in Miyakojima"
+  },
+  "filters": {
+    "search": "Search hotels...",
+    "maxPrice": "Max price per night",
+    "minRating": "Minimum rating",
+    "beachOnly": "Beach access only",
+    "tags": "Tags"
+  },
+  "hotel": {
+    "perNight": "per night",
+    "reviews": "reviews",
+    "amenities": "Amenities",
+    "viewDetails": "View Details"
+  },
+  "common": {
+    "loading": "Loading...",
+    "noResults": "No hotels match your filters. Try adjusting them."
+  }
+}
