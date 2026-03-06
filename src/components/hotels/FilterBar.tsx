@@ -2,7 +2,7 @@
 import { useTranslation } from 'react-i18next';
 import { useFilterStore } from '../../store/useFilterStore';
 import { Button } from '../ui/Button';
-import { Search, Filter, X } from 'lucide-react';
+import { Search, X } from 'lucide-react';
 
 export const FilterBar = () => {
   const { t } = useTranslation();
