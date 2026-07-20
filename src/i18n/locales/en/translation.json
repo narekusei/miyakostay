@@ -1,20 +1,39 @@
 {
   "app": {
     "title": "MiyakoStay",
-    "subtitle": "Find your perfect stay in Miyakojima"
+    "subtitle": "Discover a stay that fits your trip to Miyakojima"
   },
   "filters": {
-    "search": "Search hotels...",
-    "maxPrice": "Max price per night",
+    "search": "Search by hotel or area",
+    "maxPrice": "Maximum price per night",
     "minRating": "Minimum rating",
     "beachOnly": "Beach access only",
-    "tags": "Tags"
+    "tags": "Travel style",
+    "reset": "Reset filters"
+  },
+  "tags": {
+    "beach": "Beach",
+    "luxury": "Luxury",
+    "budget": "Budget",
+    "family": "Family",
+    "couples": "Couples"
   },
   "hotel": {
     "perNight": "per night",
     "reviews": "reviews",
     "amenities": "Amenities",
-    "viewDetails": "View Details"
+    "viewDetails": "View details",
+    "beachAccess": "Beach access",
+    "notFound": "Hotel not found",
+    "backToHotels": "Back to hotels",
+    "back": "Back",
+    "checkAvailability": "Check availability",
+    "demoNotice": "This is a portfolio demo. Reservations are not available."
+  },
+  "language": {
+    "label": "Language",
+    "english": "English",
+    "japanese": "Japanese"
   },
   "common": {
     "loading": "Loading...",

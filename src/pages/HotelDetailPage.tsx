@@ -10,16 +10,16 @@ export const HotelDetailPage = () => {
   const { id } = useParams();
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
-  const isJa = i18n.language === 'ja';
+  const isJa = i18n.resolvedLanguage === 'ja';
 
   const hotel = mockHotels.find(h => h.id === id);
 
   if (!hotel) {
     return (
       <div className="max-w-7xl mx-auto px-4 py-12 text-center">
-        <p className="text-gray-500">Hotel not found</p>
+        <p className="text-gray-500">{t('hotel.notFound')}</p>
         <Button onClick={() => navigate('/')} className="mt-4">
-          Back to hotels
+          {t('hotel.backToHotels')}
         </Button>
       </div>
     );
@@ -41,7 +41,7 @@ export const HotelDetailPage = () => {
         onClick={() => navigate('/')}
         className="mb-6 flex items-center gap-2"
       >
-        <ArrowLeft className="w-4 h-4" /> Back
+        <ArrowLeft className="w-4 h-4" aria-hidden="true" /> {t('hotel.back')}
       </Button>
 
       {/* Image Gallery */}
@@ -68,7 +68,7 @@ export const HotelDetailPage = () => {
               <span>{isJa ? hotel.location.areaJa : hotel.location.area}</span>
               {hotel.location.beachAccess && (
                 <span className="flex items-center gap-1 text-ocean-600 text-sm">
-                  <Waves className="w-4 h-4" /> Beach access
+                  <Waves className="w-4 h-4" aria-hidden="true" /> {t('hotel.beachAccess')}
                 </span>
               )}
             </div>
@@ -110,10 +110,10 @@ export const HotelDetailPage = () => {
       {/* CTA */}
       <div className="text-center">
         <Button size="lg" className="w-full md:w-auto">
-          📅 Check Availability
+          {t('hotel.checkAvailability')}
         </Button>
         <p className="text-gray-500 text-sm mt-2">
-          * This is a demo portfolio project. No real booking available.
+          {t('hotel.demoNotice')}
         </p>
       </div>
     </main>
