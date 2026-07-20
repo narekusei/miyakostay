@@ -3,13 +3,12 @@ import { useTranslation } from 'react-i18next';
 import { useFilterStore } from '../../store/useFilterStore';
 import { Button } from '../ui/Button';
 import { Search, X } from 'lucide-react';
+import { HOTEL_TAGS } from '../../types/hotel';
 
 export const FilterBar = () => {
   const { t } = useTranslation();
   const filters = useFilterStore();
-  const { setSearch, setMaxPrice, setMinRating, toggleBeachOnly, toggleTag, resetFilters } = useFilterStore();
-
-  const tags = ['beach', 'luxury', 'budget', 'family', 'couples'];
+  const { setSearch, setMaxPrice, setMinRating, toggleBeachOnly, toggleTag, resetFilters } = filters;
 
   return (
     <div className="glass rounded-2xl p-4 mb-6 space-y-4">
@@ -18,6 +17,7 @@ export const FilterBar = () => {
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
         <input
           type="text"
+          aria-label={t('filters.search')}
           placeholder={t('filters.search')}
           value={filters.search}
           onChange={(e) => setSearch(e.target.value)}
@@ -28,10 +28,11 @@ export const FilterBar = () => {
       {/* Price + Rating */}
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="max-price" className="block text-sm font-medium text-gray-700 mb-1">
             {t('filters.maxPrice')}: ¥{filters.maxPrice.toLocaleString()}
           </label>
           <input
+            id="max-price"
             type="range"
             min="0"
             max="50000"
@@ -42,10 +43,11 @@ export const FilterBar = () => {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="min-rating" className="block text-sm font-medium text-gray-700 mb-1">
             {t('filters.minRating')}: {filters.minRating}★
           </label>
           <input
+            id="min-rating"
             type="range"
             min="0"
             max="5"
@@ -74,17 +76,19 @@ export const FilterBar = () => {
           {t('filters.tags')}
         </label>
         <div className="flex flex-wrap gap-2">
-          {tags.map(tag => (
+          {HOTEL_TAGS.map(tag => (
             <button
+              type="button"
               key={tag}
               onClick={() => toggleTag(tag)}
+              aria-pressed={filters.tags.includes(tag)}
               className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
                 filters.tags.includes(tag)
                   ? 'bg-ocean-500 text-white'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
-              {tag.charAt(0).toUpperCase() + tag.slice(1)}
+              {t(`tags.${tag}`)}
             </button>
           ))}
         </div>
@@ -97,7 +101,7 @@ export const FilterBar = () => {
         onClick={resetFilters}
         className="w-full flex items-center justify-center gap-2"
       >
-        <X className="w-4 h-4" /> Reset Filters
+        <X className="w-4 h-4" aria-hidden="true" /> {t('filters.reset')}
       </Button>
     </div>
   );

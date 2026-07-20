@@ -12,7 +12,7 @@ interface HotelCardProps {
 
 export const HotelCard = ({ hotel, onViewDetails }: HotelCardProps) => {
   const { t, i18n } = useTranslation();
-  const isJa = i18n.language === 'ja';
+  const isJa = i18n.resolvedLanguage === 'ja';
 
   const amenityIcons: Record<string, JSX.Element> = {
     'WiFi': <Wifi className="w-4 h-4" />,
@@ -31,7 +31,7 @@ export const HotelCard = ({ hotel, onViewDetails }: HotelCardProps) => {
         />
         {hotel.location.beachAccess && (
           <span className="absolute top-3 right-3 bg-ocean-500 text-white text-xs px-2 py-1 rounded-full flex items-center gap-1">
-            <Waves className="w-3 h-3" /> Beach
+            <Waves className="w-3 h-3" aria-hidden="true" /> {t('hotel.beachAccess')}
           </span>
         )}
       </div>

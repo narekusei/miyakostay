@@ -1,4 +1,8 @@
 // src/types/hotel.ts
+export const HOTEL_TAGS = ['beach', 'luxury', 'budget', 'family', 'couples'] as const;
+
+export type HotelTag = (typeof HOTEL_TAGS)[number];
+
 export interface Hotel {
   id: string;
   name: string;
@@ -17,7 +21,7 @@ export interface Hotel {
   amenities: string[];
   amenitiesJa: string[];
   images: string[];
-  tags: ('beach' | 'luxury' | 'budget' | 'family' | 'couples')[];
+  tags: HotelTag[];
 }
 
 export interface FilterState {
@@ -25,5 +29,5 @@ export interface FilterState {
   maxPrice: number;
   minRating: number;
   beachOnly: boolean;
-  tags: string[];
+  tags: HotelTag[];
 }
