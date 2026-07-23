@@ -2,8 +2,7 @@ import type { FilterState, HotelTag } from '../types/hotel';
 
 export const initialFilterState: FilterState = {
   search: '',
-  maxPrice: 50000,
-  minRating: 0,
+  priceCategory: 'all',
   beachOnly: false,
   tags: [],
 };

@@ -5,8 +5,7 @@
   },
   "filters": {
     "search": "Search by hotel or area",
-    "maxPrice": "Maximum price per night",
-    "minRating": "Minimum rating",
+    "priceCategory": "Indicative price category",
     "beachOnly": "Beach access only",
     "tags": "Travel style",
     "reset": "Reset filters"
@@ -16,20 +15,34 @@
     "luxury": "Luxury",
     "budget": "Budget",
     "family": "Family",
-    "couples": "Couples"
+    "couples": "Couples",
+    "city": "City",
+    "villa": "Villa",
+    "wellness": "Wellness"
+  },
+  "priceCategories": {
+    "all": "All categories",
+    "budget": "Budget",
+    "midRange": "Mid-range",
+    "premium": "Premium",
+    "luxury": "Luxury"
+  },
+  "propertyTypes": {
+    "cityHotel": "City hotel",
+    "resort": "Resort",
+    "villa": "Villa resort",
+    "containerHotel": "Container hotel"
   },
   "hotel": {
-    "perNight": "per night",
-    "reviews": "reviews",
     "amenities": "Amenities",
     "viewDetails": "View details",
     "beachAccess": "Beach access",
     "notFound": "Hotel not found",
     "backToHotels": "Back to hotels",
     "back": "Back",
-    "checkAvailability": "Check availability",
-    "demoNotice": "This is a portfolio demo. Reservations are not available.",
-    "sampleDataNotice": "Prices, ratings, and review counts are sample data.",
+    "officialWebsite": "Visit official website",
+    "demoNotice": "MiyakoStay does not process reservations. Availability and current rates are provided by each hotel.",
+    "catalogNotice": "A curated discovery guide. Hotel facts and links are sourced from official websites; price categories are indicative.",
     "resultsCount": "Showing {{count}} of {{total}} hotels"
   },
   "language": {

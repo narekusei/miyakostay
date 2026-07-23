@@ -1,33 +1,43 @@
 // src/types/hotel.ts
-export const HOTEL_TAGS = ['beach', 'luxury', 'budget', 'family', 'couples'] as const;
+export const HOTEL_TAGS = [
+  'beach',
+  'luxury',
+  'budget',
+  'family',
+  'couples',
+  'city',
+  'villa',
+  'wellness',
+] as const;
 
 export type HotelTag = (typeof HOTEL_TAGS)[number];
 
+export const PRICE_CATEGORIES = ['budget', 'midRange', 'premium', 'luxury'] as const;
+
+export type PriceCategory = (typeof PRICE_CATEGORIES)[number];
+
 export interface Hotel {
-  id: string;
+  slug: string;
   name: string;
   nameJa: string;
   description: string;
   descriptionJa: string;
-  pricePerNight: number;
-  rating: number; // 0-5
-  reviewCount: number;
   location: {
     area: string;
     areaJa: string;
     beachAccess: boolean;
-    coordinates: { lat: number; lng: number };
   };
+  propertyType: 'cityHotel' | 'resort' | 'villa' | 'containerHotel';
+  priceCategory: PriceCategory;
+  officialWebsite: string;
   amenities: string[];
   amenitiesJa: string[];
-  images: string[];
   tags: HotelTag[];
 }
 
 export interface FilterState {
   search: string;
-  maxPrice: number;
-  minRating: number;
+  priceCategory: PriceCategory | 'all';
   beachOnly: boolean;
   tags: HotelTag[];
 }

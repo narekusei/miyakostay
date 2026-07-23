@@ -9,16 +9,17 @@ A bilingual hotel discovery experience focused exclusively on **Miyakojima, Japa
 
 ## About the project
 
-MiyakoStay helps travelers compare hotels, resorts, villas, and guesthouses on Miyakojima. Visitors can search by hotel or area, narrow the results by price, rating, beach access, and travel style, then explore a dedicated hotel page in English or Japanese.
+MiyakoStay helps travelers compare a curated selection of hotels, resorts, and villas across Miyakojima and its bridge-connected islands. Visitors can search by hotel or area, narrow the results by indicative price category, beach access, and travel style, then continue to each property's official website.
 
 The product idea comes from my hospitality experience on Miyakojima. Travelers regularly need clear, locally relevant accommodation information, so I built a focused discovery guide instead of another worldwide booking clone.
 
-MiyakoStay is currently a frontend portfolio project. The accommodation data is demonstrative and the application does not process reservations or payments.
+MiyakoStay is currently a frontend portfolio project. Property names, locations, facilities, and links are curated from official hotel websites. Price categories are indicative, and the application does not process reservations or payments.
 
 ## Features
 
 - Hotel and area search
-- Price and rating filters
+- Indicative price-category filter
+- Official hotel links and human-readable detail URLs
 - Beach-access and travel-style filters
 - English and Japanese localization
 - Responsive hotel cards and detail pages
@@ -43,13 +44,12 @@ MiyakoStay is currently a frontend portfolio project. The accommodation data is 
 ```text
 src/
 ├── components/   Reusable layout, hotel, and UI components
-├── data/         Demonstration accommodation data
+├── data/         Curated accommodation catalog
 ├── hooks/        Hotel filtering and application hooks
 ├── i18n/         English and Japanese resources
 ├── pages/        Route-level screens
 ├── store/        Zustand filter state
 ├── types/        Shared domain types
-└── utils/        Formatting helpers
 ```
 
 The filtering rules live outside the UI so they can be tested independently. Hotel tags are represented by one shared TypeScript union, keeping the data, filters, and interface in sync.
@@ -72,13 +72,16 @@ npm run build
 npm run lint
 ```
 
-## Product direction
+## Data policy
 
-The next phase is a curated Miyakojima accommodation data layer. The goal is to add more real properties and reliable local information while keeping the project focused on discovery—not pretending to offer live prices or bookings without an authorized provider.
+MiyakoStay links directly to official property websites and intentionally avoids presenting live rates, availability, or third-party review scores. The interface uses original visual placeholders instead of copying hotel photography. Property information should be rechecked periodically because facilities and services can change.
+
+The catalog references official websites from Hilton, Tokyu Hotels, Shigira Seven Miles Resort, UDS Hotels, Iraph SUI, Seawood Hotel, Hotel Atollemerald, Tabino Hotel, and Miyakojima Blue Village.
+
+## Product direction
 
 Planned work includes:
 
-- A documented, normalized hotel data source
 - Loading, empty, and error states
 - Nearby beaches and airport-distance information
 - Persistent favorites

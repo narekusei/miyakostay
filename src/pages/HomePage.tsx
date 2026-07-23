@@ -19,7 +19,7 @@ export const HomePage = () => {
         </h2>
         <p className="text-gray-600">{t('app.subtitle')}</p>
         <p className="mt-3 text-xs text-gray-500">
-          {t('hotel.sampleDataNotice')}
+          {t('hotel.catalogNotice')}
         </p>
       </section>
 
@@ -37,9 +37,9 @@ export const HomePage = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {hotels.map(hotel => (
             <HotelCard 
-              key={hotel.id} 
+              key={hotel.slug}
               hotel={hotel} 
-              onViewDetails={(id) => navigate(`/hotel/${id}`)}
+          onViewDetails={(slug) => navigate(`/hotel/${slug}`)}
             />
           ))}
         </div>
