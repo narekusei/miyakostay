@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 export const HomePage = () => {
   const { t } = useTranslation();
-  const { hotels, total } = useFilteredHotels();
+  const { hotels, total, isLoading, isError, retry } = useFilteredHotels();
   const navigate = useNavigate();
 
   return (
@@ -26,6 +26,17 @@ export const HomePage = () => {
       <FilterBar />
 
       {/* Results */}
+      {isLoading && <p className="py-12 text-center text-gray-500">{t('common.loading')}</p>}
+      {isError && (
+        <div className="py-12 text-center">
+          <p className="mb-3 text-gray-600">{t('common.loadError')}</p>
+          <button className="font-medium text-ocean-600 underline" onClick={() => retry()}>
+            {t('common.retry')}
+          </button>
+        </div>
+      )}
+      {!isLoading && !isError && (
+        <>
       <p className="mb-4 text-sm text-gray-600" aria-live="polite">
         {t('hotel.resultsCount', { count: hotels.length, total })}
       </p>
@@ -43,6 +54,8 @@ export const HomePage = () => {
             />
           ))}
         </div>
+      )}
+        </>
       )}
     </main>
   );
