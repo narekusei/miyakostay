@@ -26,11 +26,11 @@ export const HotelDetailPage = () => {
   }
 
   const amenityIcons: Record<string, JSX.Element> = {
-    'WiFi': <Wifi className="w-5 h-5" />,
-    'Pool': <Waves className="w-5 h-5" />,
-    'Restaurant': <Utensils className="w-5 h-5" />,
-    'Spa': <Waves className="w-5 h-5" />,
-    'Bike Rental': <MapPin className="w-5 h-5" />,
+    'WiFi': <Wifi className="w-5 h-5" aria-hidden="true" />,
+    'Pool': <Waves className="w-5 h-5" aria-hidden="true" />,
+    'Restaurant': <Utensils className="w-5 h-5" aria-hidden="true" />,
+    'Spa': <Waves className="w-5 h-5" aria-hidden="true" />,
+    'Bike Rental': <MapPin className="w-5 h-5" aria-hidden="true" />,
   };
 
   return (
@@ -64,7 +64,7 @@ export const HotelDetailPage = () => {
               {isJa ? hotel.nameJa : hotel.name}
             </h1>
             <div className="flex items-center gap-2 text-gray-600">
-              <MapPin className="w-4 h-4" />
+              <MapPin className="w-4 h-4" aria-hidden="true" />
               <span>{isJa ? hotel.location.areaJa : hotel.location.area}</span>
               {hotel.location.beachAccess && (
                 <span className="flex items-center gap-1 text-ocean-600 text-sm">
@@ -75,7 +75,7 @@ export const HotelDetailPage = () => {
           </div>
           <div className="text-right">
             <div className="flex items-center justify-end gap-1 text-amber-500 mb-1">
-              <Star className="w-5 h-5 fill-current" />
+              <Star className="w-5 h-5 fill-current" aria-hidden="true" />
               <span className="font-bold text-lg">{hotel.rating}</span>
               <span className="text-gray-500">({hotel.reviewCount} {t('hotel.reviews')})</span>
             </div>
@@ -114,6 +114,9 @@ export const HotelDetailPage = () => {
         </Button>
         <p className="text-gray-500 text-sm mt-2">
           {t('hotel.demoNotice')}
+        </p>
+        <p className="text-gray-500 text-xs mt-1">
+          {t('hotel.sampleDataNotice')}
         </p>
       </div>
     </main>

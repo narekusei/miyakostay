@@ -15,9 +15,9 @@ export const HotelCard = ({ hotel, onViewDetails }: HotelCardProps) => {
   const isJa = i18n.resolvedLanguage === 'ja';
 
   const amenityIcons: Record<string, JSX.Element> = {
-    'WiFi': <Wifi className="w-4 h-4" />,
-    'Pool': <Waves className="w-4 h-4" />,
-    'Restaurant': <Utensils className="w-4 h-4" />,
+    'WiFi': <Wifi className="w-4 h-4" aria-hidden="true" />,
+    'Pool': <Waves className="w-4 h-4" aria-hidden="true" />,
+    'Restaurant': <Utensils className="w-4 h-4" aria-hidden="true" />,
   };
 
   return (
@@ -43,7 +43,7 @@ export const HotelCard = ({ hotel, onViewDetails }: HotelCardProps) => {
             {isJa ? hotel.nameJa : hotel.name}
           </h3>
           <div className="flex items-center gap-1 text-amber-500">
-            <Star className="w-4 h-4 fill-current" />
+            <Star className="w-4 h-4 fill-current" aria-hidden="true" />
             <span className="font-medium text-sm">{hotel.rating}</span>
             <span className="text-gray-500 text-xs">({hotel.reviewCount})</span>
           </div>
@@ -54,7 +54,7 @@ export const HotelCard = ({ hotel, onViewDetails }: HotelCardProps) => {
         </p>
 
         <div className="flex items-center gap-1 text-gray-500 text-sm mb-3">
-          <MapPin className="w-4 h-4" />
+          <MapPin className="w-4 h-4" aria-hidden="true" />
           <span>{isJa ? hotel.location.areaJa : hotel.location.area}</span>
         </div>
 

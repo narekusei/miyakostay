@@ -28,7 +28,9 @@
     "backToHotels": "Back to hotels",
     "back": "Back",
     "checkAvailability": "Check availability",
-    "demoNotice": "This is a portfolio demo. Reservations are not available."
+    "demoNotice": "This is a portfolio demo. Reservations are not available.",
+    "sampleDataNotice": "Prices, ratings, and review counts are sample data.",
+    "resultsCount": "Showing {{count}} of {{total}} hotels"
   },
   "language": {
     "label": "Language",

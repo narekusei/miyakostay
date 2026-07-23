@@ -1,10 +1,9 @@
-// src/hooks/useHotels.ts
 import { useMemo } from 'react';
 import { mockHotels } from '../data/mockHotels';
 import { useFilterStore } from '../store/useFilterStore';
 import { filterHotels } from '../domain/filterHotels';
 
-export const useHotels = () => {
+export const useFilteredHotels = () => {
   const search = useFilterStore((state) => state.search);
   const maxPrice = useFilterStore((state) => state.maxPrice);
   const minRating = useFilterStore((state) => state.minRating);

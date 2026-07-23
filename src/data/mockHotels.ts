@@ -1,5 +1,3 @@
-// src/data/mockHotels.ts
-// src/data/mockHotels.ts
 import type { Hotel } from '../types/hotel';
 
 export const mockHotels: Hotel[] = [

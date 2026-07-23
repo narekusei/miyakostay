@@ -28,7 +28,9 @@
     "backToHotels": "ホテル一覧へ戻る",
     "back": "戻る",
     "checkAvailability": "空室状況を確認",
-    "demoNotice": "ポートフォリオ用のデモです。実際の予約はできません。"
+    "demoNotice": "ポートフォリオ用のデモです。実際の予約はできません。",
+    "sampleDataNotice": "料金・評価・レビュー件数はサンプルデータです。",
+    "resultsCount": "{{total}}件中{{count}}件を表示"
   },
   "language": {
     "label": "言語",
