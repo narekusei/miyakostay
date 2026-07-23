@@ -1,10 +1,10 @@
 // src/pages/HotelDetailPage.tsx
 import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { mockHotels } from '../data/mockHotels';
+import { curatedHotels } from '../data/curatedHotels';
 import { Button } from '../components/ui/Button';
-import { ArrowLeft, Star, MapPin, Wifi, Waves, Utensils } from 'lucide-react';
-import type { JSX } from 'react';
+import { ArrowLeft, Building2, ExternalLink, MapPin, Waves } from 'lucide-react';
+import type { Hotel } from '../types/hotel';
 
 export const HotelDetailPage = () => {
   const { id } = useParams();
@@ -12,7 +12,7 @@ export const HotelDetailPage = () => {
   const navigate = useNavigate();
   const isJa = i18n.resolvedLanguage === 'ja';
 
-  const hotel = mockHotels.find(h => h.id === id);
+  const hotel = curatedHotels.find((hotel) => hotel.slug === id);
 
   if (!hotel) {
     return (
@@ -25,12 +25,11 @@ export const HotelDetailPage = () => {
     );
   }
 
-  const amenityIcons: Record<string, JSX.Element> = {
-    'WiFi': <Wifi className="w-5 h-5" />,
-    'Pool': <Waves className="w-5 h-5" />,
-    'Restaurant': <Utensils className="w-5 h-5" />,
-    'Spa': <Waves className="w-5 h-5" />,
-    'Bike Rental': <MapPin className="w-5 h-5" />,
+  const heroStyles: Record<Hotel['propertyType'], string> = {
+    cityHotel: 'from-slate-700 via-ocean-600 to-sky-300',
+    resort: 'from-ocean-900 via-ocean-500 to-cyan-200',
+    villa: 'from-emerald-900 via-teal-600 to-sand-200',
+    containerHotel: 'from-indigo-900 via-violet-600 to-amber-200',
   };
 
   return (
@@ -44,16 +43,8 @@ export const HotelDetailPage = () => {
         <ArrowLeft className="w-4 h-4" aria-hidden="true" /> {t('hotel.back')}
       </Button>
 
-      {/* Image Gallery */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-6">
-        {hotel.images.map((img, idx) => (
-          <img 
-            key={idx}
-            src={img} 
-            alt={`${hotel.name} ${idx + 1}`}
-            className="w-full h-32 md:h-40 object-cover rounded-lg"
-          />
-        ))}
+      <div className={`mb-6 flex h-64 items-center justify-center rounded-2xl bg-gradient-to-br ${heroStyles[hotel.propertyType]}`}>
+        <Building2 className="h-24 w-24 text-white/80" aria-hidden="true" />
       </div>
 
       {/* Info */}
@@ -64,7 +55,7 @@ export const HotelDetailPage = () => {
               {isJa ? hotel.nameJa : hotel.name}
             </h1>
             <div className="flex items-center gap-2 text-gray-600">
-              <MapPin className="w-4 h-4" />
+              <MapPin className="w-4 h-4" aria-hidden="true" />
               <span>{isJa ? hotel.location.areaJa : hotel.location.area}</span>
               {hotel.location.beachAccess && (
                 <span className="flex items-center gap-1 text-ocean-600 text-sm">
@@ -74,15 +65,8 @@ export const HotelDetailPage = () => {
             </div>
           </div>
           <div className="text-right">
-            <div className="flex items-center justify-end gap-1 text-amber-500 mb-1">
-              <Star className="w-5 h-5 fill-current" />
-              <span className="font-bold text-lg">{hotel.rating}</span>
-              <span className="text-gray-500">({hotel.reviewCount} {t('hotel.reviews')})</span>
-            </div>
-            <div className="text-3xl font-bold text-ocean-600">
-              ¥{hotel.pricePerNight.toLocaleString()}
-              <span className="text-lg font-normal text-gray-500 ml-1">/{t('hotel.perNight')}</span>
-            </div>
+            <p className="font-semibold text-ocean-700">{t(`priceCategories.${hotel.priceCategory}`)}</p>
+            <p className="text-sm text-gray-500">{t(`propertyTypes.${hotel.propertyType}`)}</p>
           </div>
         </div>
 
@@ -99,7 +83,6 @@ export const HotelDetailPage = () => {
                 key={idx}
                 className="flex items-center gap-2 bg-gray-100 text-gray-700 px-3 py-2 rounded-lg"
               >
-                {amenityIcons[amenity] || <Wifi className="w-4 h-4" />}
                 {isJa ? hotel.amenitiesJa[idx] : amenity}
               </span>
             ))}
@@ -109,9 +92,15 @@ export const HotelDetailPage = () => {
 
       {/* CTA */}
       <div className="text-center">
-        <Button size="lg" className="w-full md:w-auto">
-          {t('hotel.checkAvailability')}
-        </Button>
+        <a
+          href={hotel.officialWebsite}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-ocean-500 px-6 py-3 text-lg font-medium text-white transition-colors hover:bg-ocean-600 focus:outline-none focus:ring-2 focus:ring-ocean-500 focus:ring-offset-2 md:w-auto"
+        >
+          {t('hotel.officialWebsite')}
+          <ExternalLink className="h-5 w-5" aria-hidden="true" />
+        </a>
         <p className="text-gray-500 text-sm mt-2">
           {t('hotel.demoNotice')}
         </p>

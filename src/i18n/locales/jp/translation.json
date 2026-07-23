@@ -5,8 +5,7 @@
   },
   "filters": {
     "search": "ホテル名・エリアで検索",
-    "maxPrice": "1泊あたりの上限料金",
-    "minRating": "最低評価",
+    "priceCategory": "料金カテゴリー（目安）",
     "beachOnly": "ビーチアクセスあり",
     "tags": "旅行スタイル",
     "reset": "絞り込みをリセット"
@@ -16,19 +15,35 @@
     "luxury": "ラグジュアリー",
     "budget": "リーズナブル",
     "family": "ファミリー",
-    "couples": "カップル"
+    "couples": "カップル",
+    "city": "市街地",
+    "villa": "ヴィラ",
+    "wellness": "ウェルネス"
+  },
+  "priceCategories": {
+    "all": "すべてのカテゴリー",
+    "budget": "リーズナブル",
+    "midRange": "ミドルレンジ",
+    "premium": "プレミアム",
+    "luxury": "ラグジュアリー"
+  },
+  "propertyTypes": {
+    "cityHotel": "シティホテル",
+    "resort": "リゾート",
+    "villa": "ヴィラリゾート",
+    "containerHotel": "コンテナホテル"
   },
   "hotel": {
-    "perNight": "1泊",
-    "reviews": "件のレビュー",
     "amenities": "設備・サービス",
     "viewDetails": "詳細を見る",
     "beachAccess": "ビーチアクセス",
     "notFound": "ホテルが見つかりません",
     "backToHotels": "ホテル一覧へ戻る",
     "back": "戻る",
-    "checkAvailability": "空室状況を確認",
-    "demoNotice": "ポートフォリオ用のデモです。実際の予約はできません。"
+    "officialWebsite": "公式サイトを見る",
+    "demoNotice": "MiyakoStayでは予約を受け付けていません。空室状況と最新料金は各ホテルの公式サイトでご確認ください。",
+    "catalogNotice": "公式サイトの情報とリンクをもとにした宿探しガイドです。料金カテゴリーは目安です。",
+    "resultsCount": "{{total}}件中{{count}}件を表示"
   },
   "language": {
     "label": "言語",

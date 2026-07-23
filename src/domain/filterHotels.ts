@@ -15,8 +15,9 @@ export const filterHotels = (hotels: Hotel[], filters: FilterState) => {
       if (!searchableText.includes(query)) return false;
     }
 
-    if (hotel.pricePerNight > filters.maxPrice) return false;
-    if (hotel.rating < filters.minRating) return false;
+    if (filters.priceCategory !== 'all' && hotel.priceCategory !== filters.priceCategory) {
+      return false;
+    }
     if (filters.beachOnly && !hotel.location.beachAccess) return false;
     if (filters.tags.length > 0 && !filters.tags.some((tag) => hotel.tags.includes(tag))) {
       return false;

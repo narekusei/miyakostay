@@ -2,33 +2,28 @@
 import { useTranslation } from 'react-i18next';
 import type { Hotel } from '../../types/hotel';
 import { Button } from '../ui/Button';
-import { Star, MapPin, Wifi, Utensils, Waves } from 'lucide-react';
-import type { JSX } from 'react';
+import { Building2, MapPin, Waves } from 'lucide-react';
 
 interface HotelCardProps {
   hotel: Hotel;
-  onViewDetails: (id: string) => void;
+  onViewDetails: (slug: string) => void;
 }
 
 export const HotelCard = ({ hotel, onViewDetails }: HotelCardProps) => {
   const { t, i18n } = useTranslation();
   const isJa = i18n.resolvedLanguage === 'ja';
 
-  const amenityIcons: Record<string, JSX.Element> = {
-    'WiFi': <Wifi className="w-4 h-4" />,
-    'Pool': <Waves className="w-4 h-4" />,
-    'Restaurant': <Utensils className="w-4 h-4" />,
+  const heroStyles: Record<Hotel['propertyType'], string> = {
+    cityHotel: 'from-slate-700 via-ocean-600 to-sky-300',
+    resort: 'from-ocean-900 via-ocean-500 to-cyan-200',
+    villa: 'from-emerald-900 via-teal-600 to-sand-200',
+    containerHotel: 'from-indigo-900 via-violet-600 to-amber-200',
   };
 
   return (
     <article className="glass rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-      {/* Image */}
-      <div className="relative h-48 overflow-hidden">
-        <img 
-          src={hotel.images[0]} 
-          alt={isJa ? hotel.nameJa : hotel.name}
-          className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-        />
+      <div className={`relative flex h-48 items-center justify-center overflow-hidden bg-gradient-to-br ${heroStyles[hotel.propertyType]}`}>
+        <Building2 className="h-16 w-16 text-white/80" aria-hidden="true" />
         {hotel.location.beachAccess && (
           <span className="absolute top-3 right-3 bg-ocean-500 text-white text-xs px-2 py-1 rounded-full flex items-center gap-1">
             <Waves className="w-3 h-3" aria-hidden="true" /> {t('hotel.beachAccess')}
@@ -42,10 +37,8 @@ export const HotelCard = ({ hotel, onViewDetails }: HotelCardProps) => {
           <h3 className="font-bold text-lg text-ocean-900">
             {isJa ? hotel.nameJa : hotel.name}
           </h3>
-          <div className="flex items-center gap-1 text-amber-500">
-            <Star className="w-4 h-4 fill-current" />
-            <span className="font-medium text-sm">{hotel.rating}</span>
-            <span className="text-gray-500 text-xs">({hotel.reviewCount})</span>
+          <div className="rounded-full bg-sand-100 px-2 py-1 text-xs font-medium text-ocean-800">
+            {t(`priceCategories.${hotel.priceCategory}`)}
           </div>
         </div>
 
@@ -54,7 +47,7 @@ export const HotelCard = ({ hotel, onViewDetails }: HotelCardProps) => {
         </p>
 
         <div className="flex items-center gap-1 text-gray-500 text-sm mb-3">
-          <MapPin className="w-4 h-4" />
+          <MapPin className="w-4 h-4" aria-hidden="true" />
           <span>{isJa ? hotel.location.areaJa : hotel.location.area}</span>
         </div>
 
@@ -65,7 +58,6 @@ export const HotelCard = ({ hotel, onViewDetails }: HotelCardProps) => {
               key={idx}
               className="flex items-center gap-1 bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full"
             >
-              {amenityIcons[amenity] || null}
               {isJa ? hotel.amenitiesJa[idx] : amenity}
             </span>
           ))}
@@ -74,18 +66,12 @@ export const HotelCard = ({ hotel, onViewDetails }: HotelCardProps) => {
           )}
         </div>
 
-        {/* Price + CTA */}
         <div className="flex items-center justify-between">
-          <div>
-            <span className="text-2xl font-bold text-ocean-600">
-              ¥{hotel.pricePerNight.toLocaleString()}
-            </span>
-            <span className="text-gray-500 text-sm ml-1">{t('hotel.perNight')}</span>
-          </div>
+          <span className="text-sm text-gray-500">{t(`propertyTypes.${hotel.propertyType}`)}</span>
           <Button 
             variant="outline" 
             size="sm"
-            onClick={() => onViewDetails(hotel.id)}
+            onClick={() => onViewDetails(hotel.slug)}
           >
             {t('hotel.viewDetails')}
           </Button>

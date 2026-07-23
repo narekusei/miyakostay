@@ -3,12 +3,13 @@ import { useTranslation } from 'react-i18next';
 import { useFilterStore } from '../../store/useFilterStore';
 import { Button } from '../ui/Button';
 import { Search, X } from 'lucide-react';
-import { HOTEL_TAGS } from '../../types/hotel';
+import { HOTEL_TAGS, PRICE_CATEGORIES } from '../../types/hotel';
+import type { PriceCategory } from '../../types/hotel';
 
 export const FilterBar = () => {
   const { t } = useTranslation();
   const filters = useFilterStore();
-  const { setSearch, setMaxPrice, setMinRating, toggleBeachOnly, toggleTag, resetFilters } = filters;
+  const { setSearch, setPriceCategory, toggleBeachOnly, toggleTag, resetFilters } = filters;
 
   return (
     <div className="glass rounded-2xl p-4 mb-6 space-y-4">
@@ -25,38 +26,23 @@ export const FilterBar = () => {
         />
       </div>
 
-      {/* Price + Rating */}
-      <div className="grid grid-cols-2 gap-4">
-        <div>
-          <label htmlFor="max-price" className="block text-sm font-medium text-gray-700 mb-1">
-            {t('filters.maxPrice')}: ¥{filters.maxPrice.toLocaleString()}
-          </label>
-          <input
-            id="max-price"
-            type="range"
-            min="0"
-            max="50000"
-            step="1000"
-            value={filters.maxPrice}
-            onChange={(e) => setMaxPrice(Number(e.target.value))}
-            className="w-full accent-ocean-500"
-          />
-        </div>
-        <div>
-          <label htmlFor="min-rating" className="block text-sm font-medium text-gray-700 mb-1">
-            {t('filters.minRating')}: {filters.minRating}★
-          </label>
-          <input
-            id="min-rating"
-            type="range"
-            min="0"
-            max="5"
-            step="0.5"
-            value={filters.minRating}
-            onChange={(e) => setMinRating(Number(e.target.value))}
-            className="w-full accent-amber-500"
-          />
-        </div>
+      <div>
+        <label htmlFor="price-category" className="block text-sm font-medium text-gray-700 mb-1">
+          {t('filters.priceCategory')}
+        </label>
+        <select
+          id="price-category"
+          value={filters.priceCategory}
+          onChange={(event) => setPriceCategory(event.target.value as PriceCategory | 'all')}
+          className="w-full rounded-lg border border-gray-200 bg-white px-3 py-2 focus:border-transparent focus:ring-2 focus:ring-ocean-500"
+        >
+          <option value="all">{t('priceCategories.all')}</option>
+          {PRICE_CATEGORIES.map((category) => (
+            <option key={category} value={category}>
+              {t(`priceCategories.${category}`)}
+            </option>
+          ))}
+        </select>
       </div>
 
       {/* Beach toggle */}

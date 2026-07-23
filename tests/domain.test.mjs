@@ -16,20 +16,18 @@ const { initialFilterState, toggleHotelTag } = await importTypeScriptModule('../
 
 const hotels = [
   {
-    id: 'resort',
+    slug: 'resort',
     name: 'Ocean Resort',
     nameJa: 'オーシャンリゾート',
-    pricePerNight: 30000,
-    rating: 4.8,
+    priceCategory: 'luxury',
     location: { area: 'Shigira', areaJa: 'シギラ', beachAccess: true },
     tags: ['beach', 'luxury'],
   },
   {
-    id: 'inn',
+    slug: 'inn',
     name: 'Central Inn',
     nameJa: 'セントラルイン',
-    pricePerNight: 8000,
-    rating: 4.1,
+    priceCategory: 'budget',
     location: { area: 'Hirara', areaJa: '平良', beachAccess: false },
     tags: ['budget'],
   },
@@ -37,18 +35,17 @@ const hotels = [
 
 test('filters hotels by localized search text', () => {
   const result = filterHotels(hotels, { ...initialFilterState, search: '平良' });
-  assert.deepEqual(result.map(({ id }) => id), ['inn']);
+  assert.deepEqual(result.map(({ slug }) => slug), ['inn']);
 });
 
-test('combines price, rating, beach, and tag filters', () => {
+test('combines price category, beach, and tag filters', () => {
   const result = filterHotels(hotels, {
     ...initialFilterState,
-    maxPrice: 35000,
-    minRating: 4.5,
+    priceCategory: 'luxury',
     beachOnly: true,
     tags: ['luxury'],
   });
-  assert.deepEqual(result.map(({ id }) => id), ['resort']);
+  assert.deepEqual(result.map(({ slug }) => slug), ['resort']);
 });
 
 test('tag state toggles without mutating the previous value', () => {
