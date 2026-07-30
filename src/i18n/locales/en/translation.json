@@ -51,7 +51,9 @@
     "japanese": "Japanese"
   },
   "common": {
-    "loading": "Loading...",
+    "loading": "Loading hotels...",
+    "loadError": "We could not load the hotel catalog.",
+    "retry": "Try again",
     "noResults": "No hotels match your filters. Try adjusting them."
   }
 }

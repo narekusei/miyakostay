@@ -20,6 +20,7 @@ MiyakoStay is currently a frontend portfolio project. Property names, locations,
 - Hotel and area search
 - Indicative price-category filter
 - Official hotel links and human-readable detail URLs
+- Google Places hotel photos with source attribution and visual fallbacks
 - Beach-access and travel-style filters
 - English and Japanese localization
 - Responsive hotel cards and detail pages
@@ -64,6 +65,14 @@ cd miyakostay
 npm ci
 npm run dev
 ```
+
+Copy `.env.example` to `.env.local` and add a browser-restricted Google Maps key:
+
+```env
+VITE_GOOGLE_MAPS_API_KEY=your_restricted_browser_key
+```
+
+The key must be restricted to the allowed website referrers and to Maps JavaScript API plus Places API (New). When the key is missing or a photo cannot be found, the UI keeps the original property-type gradient.
 
 Quality checks:
 
