@@ -3,8 +3,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { curatedHotels } from '../data/curatedHotels';
 import { Button } from '../components/ui/Button';
-import { ArrowLeft, Building2, ExternalLink, MapPin, Waves } from 'lucide-react';
-import type { Hotel } from '../types/hotel';
+import { ArrowLeft, ExternalLink, MapPin, Waves } from 'lucide-react';
+import { HotelHero } from '../components/hotels/HotelHero';
 
 export const HotelDetailPage = () => {
   const { id } = useParams();
@@ -25,13 +25,6 @@ export const HotelDetailPage = () => {
     );
   }
 
-  const heroStyles: Record<Hotel['propertyType'], string> = {
-    cityHotel: 'from-slate-700 via-ocean-600 to-sky-300',
-    resort: 'from-ocean-900 via-ocean-500 to-cyan-200',
-    villa: 'from-emerald-900 via-teal-600 to-sand-200',
-    containerHotel: 'from-indigo-900 via-violet-600 to-amber-200',
-  };
-
   return (
     <main className="max-w-4xl mx-auto px-4 py-6">
       <Button 
@@ -43,9 +36,7 @@ export const HotelDetailPage = () => {
         <ArrowLeft className="w-4 h-4" aria-hidden="true" /> {t('hotel.back')}
       </Button>
 
-      <div className={`mb-6 flex h-64 items-center justify-center rounded-2xl bg-gradient-to-br ${heroStyles[hotel.propertyType]}`}>
-        <Building2 className="h-24 w-24 text-white/80" aria-hidden="true" />
-      </div>
+      <HotelHero hotel={hotel} className="mb-6 h-64 rounded-2xl" />
 
       {/* Info */}
       <div className="glass rounded-2xl p-6 mb-6">
