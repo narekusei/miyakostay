@@ -15,7 +15,19 @@ const heroStyles: Record<Hotel['propertyType'], string> = {
 };
 
 export const HotelHero = ({ hotel, className = 'h-48' }: HotelHeroProps) => {
-  const { data: photo, isPending } = useHotelPhoto(hotel.name);
+  const {
+  data: photo,
+  isPending,
+  isError,
+  error,
+} = useHotelPhoto(hotel.name);
+
+if (isError) {
+  console.error(
+    `Failed to load photo for ${hotel.name}:`,
+    error,
+  );
+}
 
   return (
     <div
