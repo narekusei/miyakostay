@@ -81,6 +81,14 @@ npm run build
 npm run lint
 ```
 
+## Deployment
+
+The production site is deployed on Vercel. `BrowserRouter` owns human-readable routes such as `/hotel/:slug`, so `vercel.json` rewrites extensionless application paths to `index.html`. This lets Vercel serve the SPA entry point when a visitor refreshes or directly opens a hotel detail URL, while requests for static files such as JavaScript and CSS assets remain untouched.
+
+Every deployment should be checked with both the home page and a direct hotel URL. The rewrite contract also has an automated regression test in `tests/deployment.test.mjs`.
+
+The staged engineering roadmap and delivery rules are recorded in [`IMPROVEMENT_PLAN.md`](./IMPROVEMENT_PLAN.md).
+
 ## Data policy
 
 MiyakoStay links directly to official property websites and intentionally avoids presenting live rates, availability, or third-party review scores. The interface uses original visual placeholders instead of copying hotel photography. Property information should be rechecked periodically because facilities and services can change.
