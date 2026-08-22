@@ -72,7 +72,7 @@ Copy `.env.example` to `.env.local` and add a browser-restricted Google Maps key
 VITE_GOOGLE_MAPS_API_KEY=your_restricted_browser_key
 ```
 
-The key must be restricted to the allowed website referrers and to Maps JavaScript API plus Places API (New). When the key is missing or a photo cannot be found, the UI keeps the original property-type gradient.
+The key must be restricted to the allowed website referrers and to Maps JavaScript API plus Places API (New). When the key is missing or a photo cannot be found, the UI keeps the original property-type gradient. The fallback pulses only during an active, configured photo request; an intentionally disabled request is treated as idle rather than loading.
 
 Quality checks:
 

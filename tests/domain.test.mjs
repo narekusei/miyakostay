@@ -13,6 +13,9 @@ const importTypeScriptModule = async (relativePath) => {
 
 const { filterHotels } = await importTypeScriptModule('../src/domain/filterHotels.ts');
 const { initialFilterState, toggleHotelTag } = await importTypeScriptModule('../src/domain/filterState.ts');
+const { shouldAnimatePhotoFallback } = await importTypeScriptModule(
+  '../src/domain/hotelPhotoState.ts',
+);
 
 const hotels = [
   {
@@ -56,4 +59,23 @@ test('tag state toggles without mutating the previous value', () => {
   assert.deepEqual(original, ['beach']);
   assert.deepEqual(added, ['beach', 'family']);
   assert.deepEqual(removed, ['family']);
+});
+
+test('photo fallback animates only while a configured request is fetching', () => {
+  assert.equal(
+    shouldAnimatePhotoFallback({ isConfigured: true, isFetching: true }),
+    true,
+  );
+  assert.equal(
+    shouldAnimatePhotoFallback({ isConfigured: true, isFetching: false }),
+    false,
+  );
+  assert.equal(
+    shouldAnimatePhotoFallback({ isConfigured: false, isFetching: false }),
+    false,
+  );
+  assert.equal(
+    shouldAnimatePhotoFallback({ isConfigured: false, isFetching: true }),
+    false,
+  );
 });

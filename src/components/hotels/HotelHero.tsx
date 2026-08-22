@@ -16,18 +16,18 @@ const heroStyles: Record<Hotel['propertyType'], string> = {
 
 export const HotelHero = ({ hotel, className = 'h-48' }: HotelHeroProps) => {
   const {
-  data: photo,
-  isPending,
-  isError,
-  error,
-} = useHotelPhoto(hotel.name);
-
-if (isError) {
-  console.error(
-    `Failed to load photo for ${hotel.name}:`,
+    data: photo,
+    isFallbackLoading,
+    isError,
     error,
-  );
-}
+  } = useHotelPhoto(hotel.name);
+
+  if (isError) {
+    console.error(
+      `Failed to load photo for ${hotel.name}:`,
+      error,
+    );
+  }
 
   return (
     <div
@@ -71,7 +71,7 @@ if (isError) {
         </>
       ) : (
         <Building2
-          className={`text-white/80 ${isPending ? 'animate-pulse' : ''} h-16 w-16`}
+          className={`text-white/80 ${isFallbackLoading ? 'animate-pulse' : ''} h-16 w-16`}
           aria-hidden="true"
         />
       )}
