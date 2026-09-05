@@ -3,6 +3,7 @@
 A bilingual hotel discovery experience focused exclusively on **Miyakojima, Japan**.
 
 [![Live demo](https://img.shields.io/badge/Live_demo-Open-0284c7?style=flat-square)](https://miyakostay.vercel.app)
+[![CI](https://github.com/narekusei/miyakostay/actions/workflows/ci.yml/badge.svg)](https://github.com/narekusei/miyakostay/actions/workflows/ci.yml)
 [![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=white)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](LICENSE)
@@ -77,9 +78,12 @@ The key must be restricted to the allowed website referrers and to Maps JavaScri
 Quality checks:
 
 ```bash
-npm run build
 npm run lint
+npm test
+npm run build
 ```
+
+GitHub Actions runs the same clean install and quality checks for every pull request and every push to `main`.
 
 ## Deployment
 
