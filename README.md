@@ -38,7 +38,7 @@ MiyakoStay is currently a frontend portfolio project. Property names, locations,
 | Routing | React Router 7 |
 | State | Zustand 5 |
 | Localization | i18next, react-i18next |
-| Quality | ESLint, TypeScript |
+| Quality | ESLint, TypeScript, Node.js test runner, GitHub Actions |
 | Hosting | Vercel |
 
 ## Architecture
@@ -47,9 +47,11 @@ MiyakoStay is currently a frontend portfolio project. Property names, locations,
 src/
 ├── components/   Reusable layout, hotel, and UI components
 ├── data/         Curated accommodation catalog
-├── hooks/        Hotel filtering and application hooks
+├── domain/       Framework-independent business rules
+├── hooks/        React Query and filtering integration
 ├── i18n/         English and Japanese resources
 ├── pages/        Route-level screens
+├── services/     Hotel and Google Places data access
 ├── store/        Zustand filter state
 ├── types/        Shared domain types
 ```
@@ -103,11 +105,14 @@ The catalog references official websites from Hilton, Tokyu Hotels, Shigira Seve
 
 Planned work includes:
 
-- Loading, empty, and error states
 - Nearby beaches and airport-distance information
 - Persistent favorites
 - URL-based filters
 - Automated component and integration tests
+
+## License
+
+MiyakoStay is available under the [MIT License](./LICENSE).
 
 ## What this project demonstrates
 

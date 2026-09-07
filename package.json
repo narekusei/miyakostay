@@ -2,6 +2,17 @@
   "name": "miyakostay",
   "private": true,
   "version": "0.0.0",
+  "description": "A bilingual hotel discovery guide for Miyakojima, Japan.",
+  "license": "MIT",
+  "author": "Aleksei Nesterov",
+  "homepage": "https://miyakostay.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/narekusei/miyakostay.git"
+  },
+  "bugs": {
+    "url": "https://github.com/narekusei/miyakostay/issues"
+  },
   "type": "module",
   "scripts": {
     "dev": "vite",

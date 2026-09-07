@@ -4,7 +4,7 @@ This roadmap turns the technical review into small, independently testable chang
 
 - [x] 1. Make client-side routes reliable on Vercel with an SPA rewrite, a configuration test, and deployment documentation.
 - [x] 2. Fix the Google photo fallback so an unconfigured query is not presented as permanently loading; add regression tests.
-- [ ] 3. Add GitHub Actions CI for clean install, lint, tests, and production build; expose the result in README.
+- [x] 3. Add GitHub Actions CI for clean install, lint, tests, and production build; expose the result in README.
 - [ ] 4. Add the advertised MIT license and audit repository badges and metadata.
 - [ ] 5. Move tests to Vitest and React Testing Library while preserving domain coverage and adding component tests.
 - [ ] 6. Reduce Google Places work with viewport-based loading, controlled concurrency, and a documented cache strategy.
