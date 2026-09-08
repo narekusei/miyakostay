@@ -38,7 +38,7 @@ MiyakoStay is currently a frontend portfolio project. Property names, locations,
 | Routing | React Router 7 |
 | State | Zustand 5 |
 | Localization | i18next, react-i18next |
-| Quality | ESLint, TypeScript, Node.js test runner, GitHub Actions |
+| Quality | ESLint, TypeScript, Vitest, React Testing Library, GitHub Actions |
 | Hosting | Vercel |
 
 ## Architecture
