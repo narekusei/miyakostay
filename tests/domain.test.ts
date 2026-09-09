@@ -26,7 +26,7 @@ const hotels: Hotel[] = [
     description: 'A central city hotel.',
     descriptionJa: '市街地中心部のホテル。',
     priceCategory: 'budget',
-    propertyType: 'hotel',
+    propertyType: 'cityHotel',
     location: { area: 'Hirara', areaJa: '平良', beachAccess: false },
     amenities: ['Wi-Fi'],
     amenitiesJa: ['Wi-Fi'],

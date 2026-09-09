@@ -60,7 +60,7 @@ The filtering rules live outside the UI so they can be tested independently. Hot
 
 ## Run locally
 
-Requirements: Node.js 20.19+ or 22.12+.
+Requirements: Node.js 22.22.2+, 24.15.0+, or 26+.
 
 ```bash
 git clone https://github.com/narekusei/miyakostay.git
@@ -91,7 +91,7 @@ GitHub Actions runs the same clean install and quality checks for every pull req
 
 The production site is deployed on Vercel. `BrowserRouter` owns human-readable routes such as `/hotel/:slug`, so `vercel.json` rewrites extensionless application paths to `index.html`. This lets Vercel serve the SPA entry point when a visitor refreshes or directly opens a hotel detail URL, while requests for static files such as JavaScript and CSS assets remain untouched.
 
-Every deployment should be checked with both the home page and a direct hotel URL. The rewrite contract also has an automated regression test in `tests/deployment.test.mjs`.
+Every deployment should be checked with both the home page and a direct hotel URL. The rewrite contract also has an automated regression test in `tests/deployment.test.ts`.
 
 The staged engineering roadmap and delivery rules are recorded in [`IMPROVEMENT_PLAN.md`](./IMPROVEMENT_PLAN.md).
 
