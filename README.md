@@ -108,7 +108,7 @@ Planned work includes:
 - Nearby beaches and airport-distance information
 - Persistent favorites
 - URL-based filters
-- Automated component and integration tests
+- Broader end-to-end browser coverage
 
 ## License
 
