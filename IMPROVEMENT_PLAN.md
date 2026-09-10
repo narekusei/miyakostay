@@ -6,7 +6,7 @@ This roadmap turns the technical review into small, independently testable chang
 - [x] 2. Fix the Google photo fallback so an unconfigured query is not presented as permanently loading; add regression tests.
 - [x] 3. Add GitHub Actions CI for clean install, lint, tests, and production build; expose the result in README.
 - [x] 4. Add the advertised MIT license and audit repository badges and metadata.
-- [ ] 5. Move tests to Vitest and React Testing Library while preserving domain coverage and adding component tests.
+- [x] 5. Move tests to Vitest and React Testing Library while preserving domain coverage and adding component tests.
 - [ ] 6. Reduce Google Places work with viewport-based loading, controlled concurrency, and a documented cache strategy.
 - [ ] 7. Improve accessibility and internationalization: synchronize the document language, localize photo attribution, and audit keyboard/ARIA behavior.
 - [ ] 8. Add essential SEO metadata and document the indexing limits of a client-rendered SPA.
