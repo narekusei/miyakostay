@@ -8,6 +8,13 @@ import i18n from '../src/i18n/config';
 import { hotelService } from '../src/services/hotelService';
 import { useFilterStore } from '../src/store/useFilterStore';
 
+vi.mock('../src/services/placePhotoService', () => ({
+  placePhotoService: {
+    isConfigured: false,
+    findForHotel: vi.fn(),
+  },
+}));
+
 const renderApp = () => {
   const queryClient = new QueryClient({
     defaultOptions: {

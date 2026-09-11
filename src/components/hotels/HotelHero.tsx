@@ -1,5 +1,6 @@
 import { Building2 } from 'lucide-react';
 import { useHotelPhoto } from '../../hooks/useHotelPhoto';
+import { useNearViewport } from '../../hooks/useNearViewport';
 import type { Hotel } from '../../types/hotel';
 
 interface HotelHeroProps {
@@ -15,12 +16,13 @@ const heroStyles: Record<Hotel['propertyType'], string> = {
 };
 
 export const HotelHero = ({ hotel, className = 'h-48' }: HotelHeroProps) => {
+  const { ref, isNearViewport } = useNearViewport();
   const {
     data: photo,
     isFallbackLoading,
     isError,
     error,
-  } = useHotelPhoto(hotel.name);
+  } = useHotelPhoto(hotel.name, isNearViewport);
 
   if (isError) {
     console.error(
@@ -31,6 +33,7 @@ export const HotelHero = ({ hotel, className = 'h-48' }: HotelHeroProps) => {
 
   return (
     <div
+      ref={ref}
       className={`relative flex items-center justify-center overflow-hidden bg-gradient-to-br ${heroStyles[hotel.propertyType]} ${className}`}
     >
       {photo ? (

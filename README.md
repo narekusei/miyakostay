@@ -77,6 +77,14 @@ VITE_GOOGLE_MAPS_API_KEY=your_restricted_browser_key
 
 The key must be restricted to the allowed website referrers and to Maps JavaScript API plus Places API (New). When the key is missing or a photo cannot be found, the UI keeps the original property-type gradient. The fallback pulses only during an active, configured photo request; an intentionally disabled request is treated as idle rather than loading.
 
+Hotel photos use a cost-aware request strategy:
+
+- a card starts its lookup only when it enters a 300 px margin around the viewport;
+- one shared queue allows at most three Google Places lookups at a time;
+- React Query caches successful results, including an empty result, by hotel name for 24 hours;
+- returning to the tab does not refetch photos, and revisiting a detail page reuses the in-memory result;
+- the cache intentionally resets on a full page reload so temporary Google photo URLs are not persisted as application data.
+
 Quality checks:
 
 ```bash
